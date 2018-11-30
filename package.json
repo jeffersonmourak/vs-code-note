@@ -1,11 +1,18 @@
 {
-    "name": "code-note",
-    "displayName": "code-note",
+    "name": "vs-code-note",
+    "displayName": "vs-code-note",
+    "publisher": "jeffersonmourak",
     "description": "Add notes to your code.",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jeffersonmourak/vs-code-note.git"
+    },
+    "keywords": ["notes", "vs-code-note", "note", "code note", "jeffersonmourak"],
     "version": "0.0.1",
     "engines": {
         "vscode": "^1.29.0"
     },
+    "license": "MIT",
     "categories": [
         "Other"
     ],
