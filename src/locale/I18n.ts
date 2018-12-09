@@ -1,4 +1,4 @@
-import { env, languages } from 'vscode';
+import { env } from 'vscode';
 import { get } from 'lodash';
 
 class I18n {
