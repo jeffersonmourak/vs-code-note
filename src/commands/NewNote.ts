@@ -6,6 +6,7 @@ import Command from './Command.interface';
 
 class NewNote implements Command {
 	public name : string = 'extension.addNewNote';
+	private editor : any = window.activeTextEditor;
 	private statusBarItem : StatusBarItem = window.createStatusBarItem(StatusBarAlignment.Left);
 	
 	init(context: ExtensionContext) {
@@ -17,7 +18,7 @@ class NewNote implements Command {
 		context.subscriptions.push(this.statusBarItem);
 	}
 
-	callback (editor : any) {
+	callback (context : any) {
         let options: InputBoxOptions = {
 			prompt: I18n.translate('commands.newNote.prompt'),
 			placeHolder: I18n.translate('commands.newNote.placeholder')
@@ -26,10 +27,10 @@ class NewNote implements Command {
         
         
 		window.showInputBox(options).then(value => {
-			if (value !== undefined && editor !== undefined) {				
-				Notes.addNote(editor.document.languageId, value, editor.document.getText(editor.selection));
+			if (value !== undefined && context !== undefined) {					
+				Notes.addNote(this.editor.document.languageId, value, this.editor.document.getText(this.editor.selection));
 				Decorator.reloadNotes();
-				Decorator.update(editor);
+				Decorator.update(this.editor);
 			}
 		});
     }

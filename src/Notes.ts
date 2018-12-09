@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import Constants from './config/constants';
-
+import { omit } from 'lodash';
 class Notes {
     private notesPath : string = Constants.settingsPath;
     private notes : any;
@@ -37,15 +37,28 @@ class Notes {
         }
     }
 
+    setLanguageNotes(language : any, notes : object) {
+        this.notes[language] = notes;
+    }
+
     createRegex(language: any) {
-        let names = Object.keys(this.loadLanguageNotes(language));
+        let names = this.getNotesKeys(language);
 
         return new RegExp(names.join('|'), 'g');
+    }
+
+    getNotesKeys (language : any) {
+        return Object.keys(this.loadLanguageNotes(language));
     }
 
     save() {
         fs.writeFileSync(this.notesPath, JSON.stringify(this.notes, null, 4), 'utf-8');
         this.reload();
+    }
+
+    deleteNote(language : any, key : string) {
+        this.setLanguageNotes(language, omit({ ...this.loadLanguageNotes(language) }, key));
+        this.save();
     }
 }
 
