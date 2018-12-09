@@ -8,9 +8,16 @@ Display a note for your code so you can remember of something about that specifi
 
 \!\[Code Note\]\(images/note-example.png\)
 
-## Release Notes
+\!\[Code Note remove button\]\(images/remove-example.png\)
 
-This is the first version of this code, so there's not too much feature yet, you can add a new note and see your notes
+## Release Notes
+This new version it's a little more enhanced, the new remove button was added, and the "add new" action was moved to the status bar.
+
+### 0.0.2
+Added:
+- New Icon on status bar
+- Enabled remove notes
+- Support for muliple languages
 
 ### 0.0.1
 First version, hope you guys engoy.
