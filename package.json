@@ -7,7 +7,13 @@
         "type": "git",
         "url": "git+https://github.com/jeffersonmourak/vs-code-note.git"
     },
-    "keywords": ["notes", "vs-code-note", "note", "code note", "jeffersonmourak"],
+    "keywords": [
+        "notes",
+        "vs-code-note",
+        "note",
+        "code note",
+        "jeffersonmourak"
+    ],
     "version": "0.0.1",
     "engines": {
         "vscode": "^1.29.0"
@@ -20,20 +26,6 @@
         "*"
     ],
     "main": "./out/extension",
-    "contributes": {
-        "commands": [
-            {
-                "command": "extension.addNewNote",
-                "title": "Add New Note to selection!"
-            }
-        ],
-        "menus": {
-            "editor/context": [{
-                "command": "extension.addNewNote",
-                "group": "YourGroup@1"
-            }]
-        }
-    },
     "scripts": {
         "vscode:prepublish": "yarn run compile",
         "compile": "tsc -p ./",
@@ -42,10 +34,14 @@
         "test": "yarn run compile && node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "typescript": "^2.6.1",
-        "vscode": "^1.1.21",
-        "tslint": "^5.8.0",
+        "@types/mocha": "^2.2.42",
         "@types/node": "^8.10.25",
-        "@types/mocha": "^2.2.42"
+        "tslint": "^5.8.0",
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.21"
+    },
+    "dependencies": {
+        "@types/lodash": "^4.14.118",
+        "lodash": "^4.17.11"
     }
 }

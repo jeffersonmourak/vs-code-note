@@ -1,16 +1,11 @@
 import { DecorationOptions, Range } from 'vscode';
 import decoration from './config/decoration';
-import NotesLoader from './NotesLoader';
+import Notes from './Notes';
 
 class Decorator {
-    public notes : NotesLoader;
-
-    constructor() {
-        this.notes = new NotesLoader();
-    }
 
     reloadNotes() {
-        this.notes.reload();
+        Notes.reload();
     }
 
     update(activeEditor : any) {
@@ -18,9 +13,9 @@ class Decorator {
 			return;
         }
         
-        let notes = this.notes.loadLanguageNotes(activeEditor.document.languageId);
+        let notes = Notes.loadLanguageNotes(activeEditor.document.languageId);
 
-		const regEx = this.notes.createRegex(activeEditor.document.languageId);
+		const regEx = Notes.createRegex(activeEditor.document.languageId);
 		const text = activeEditor.document.getText();
         const smallNumbers: DecorationOptions[] = [];
 
@@ -38,4 +33,4 @@ class Decorator {
     }
 }
 
-export default Decorator;
+export default new Decorator();
